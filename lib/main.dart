@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Voces de aula',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Voces de Aula'),
     );
   }
 }
@@ -55,7 +55,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+
 
   void _incrementCounter() {
     setState(() {
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      
     });
   }
 
@@ -78,48 +78,126 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
+        
+        title: Row(
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            // Logo a la izquierda
+            SizedBox(
+              width: 24,
+              height: 24,
+              child: Image.asset(
+                'assets/logo_v.png',
+                fit: BoxFit.contain,
+              ),
+
             ),
+            
+            
+            
+            SizedBox(width: 8), // Espacio entre el logo y el título
+            // Título
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              widget.title, //
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
           ],
         ),
+        backgroundColor: Color(0xFF2b448c),
+
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              // Acción del primer botón
+              print('Login button pressed');
+              
+            },
+            style: TextButton.styleFrom(backgroundColor: Color.fromRGBO(60,50, 200, 0.6)),
+            child: Text(
+              'Login',
+              style: TextStyle(
+                color: Colors.white, 
+                
+              ),
+            ),
+          ),
+          SizedBox(width: 16),
+          TextButton(
+            onPressed: () {
+              // Acción del segundo botón
+              print('Register button pressed');
+            },
+            style: TextButton.styleFrom(backgroundColor: Color.fromRGBO(60,50, 200, 0.6)),
+            child: Text(
+              'Register',
+              style: TextStyle(
+                color: Colors.white, // Color del texto del botón
+              ),
+            ),
+          ),
+        ],
+        
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      backgroundColor: Colors.grey[300],
+      body: Center(
+
+        
+
+        child: Row(
+
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: [
+            Container(
+              height: 500,
+                width: 500,
+                padding: EdgeInsets.all(20),  // Añade relleno al contenedor
+                alignment: Alignment.centerRight,
+                color: Color.fromRGBO(100, 100, 100, 0.8),
+
+                child: Column(
+                  
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    Text(
+                      'Voces de Aula es una aplicación diseñada para que los estudiantes universitarios compartan reseñas y opiniones sobre sus profesores, ayudando a otros estudiantes a tomar decisiones informadas al momento de inscribir sus materias. Con esta herramienta, podrás encontrar información basada en la experiencia de tus compañeros, lo que te permitirá elegir a los profesores que mejor se adapten a tus necesidades académicas.',
+                      style: TextStyle(color: Colors.white),
+                    ),
+
+                    SizedBox(height: 20),
+                    Text('¿Como funciona?'),
+                    SizedBox(height: 20),
+                    Expanded(child: ListView(
+                      children: [
+                        ListTile(
+                            
+                            title: Text('Filtra las reseñas por facultad, carrera y materia para obtener resultados personalizados.', style: TextStyle(color: Colors.white)),
+                          ),
+                          ListTile(
+                            
+                            title: Text('Cada profesor cuenta con una página de perfil donde puedes ver calificaciones en aspectos como claridad, metodología de enseñanza y evaluación, y actitud hacia los estudiantes.', style: TextStyle(color: Colors.white)),
+                          ),
+                          ListTile(
+                            
+                            title: Text('Los comentarios detallados te ofrecerán una visión completa del estilo de enseñanza y ambiente en el aula.', style: TextStyle(color: Colors.white)),
+                          ),
+                      ],
+                    ))
+                  ],
+
+
+                ),
+
+            ),
+          ],
+
+        ),
+        
+        
+      ),
     );
   }
 }
