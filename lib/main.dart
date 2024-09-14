@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,16 +58,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,28 +85,32 @@ class _MyHomePageState extends State<MyHomePage> {
             
             
             
-            SizedBox(width: 8), // Espacio entre el logo y el título
+            const SizedBox(width: 8), // Espacio entre el logo y el título
             // Título
             Text(
               widget.title, //
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ),
             ),
           ],
         ),
-        backgroundColor: Color(0xFF2b448c),
+        backgroundColor: const Color(0xFF2b448c),
 
         actions: <Widget>[
           TextButton(
             onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Login()),  // Navegar a la segunda página
+            );
               // Acción del primer botón
               print('Login button pressed');
               
             },
-            style: TextButton.styleFrom(backgroundColor: Color.fromRGBO(60,50, 200, 0.6)),
-            child: Text(
+            style: TextButton.styleFrom(backgroundColor: const Color.fromRGBO(60,50, 200, 0.6)),
+            child: const Text(
               'Login',
               style: TextStyle(
                 color: Colors.white, 
@@ -123,14 +118,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          SizedBox(width: 16),
+          const SizedBox(width: 16),
           TextButton(
             onPressed: () {
               // Acción del segundo botón
               print('Register button pressed');
             },
-            style: TextButton.styleFrom(backgroundColor: Color.fromRGBO(60,50, 200, 0.6)),
-            child: Text(
+            style: TextButton.styleFrom(backgroundColor: const Color.fromRGBO(60,50, 200, 0.6)),
+            child: const Text(
               'Register',
               style: TextStyle(
                 color: Colors.white, // Color del texto del botón
@@ -151,47 +146,78 @@ class _MyHomePageState extends State<MyHomePage> {
 
           children: [
             Container(
-              height: 500,
+              height: 580,
                 width: 500,
-                padding: EdgeInsets.all(20),  // Añade relleno al contenedor
+                padding: const EdgeInsets.all(20),  // Añade relleno al contenedor
                 alignment: Alignment.centerRight,
-                color: Color.fromRGBO(100, 100, 100, 0.8),
+                color: const Color.fromRGBO(100, 100, 100, 0.8),
 
-                child: Column(
+                child: const Column(
                   
                   crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
+
+                    Text(
+                      'Voces de aula',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      ),
+                    SizedBox(height: 20,),
                     Text(
                       'Voces de Aula es una aplicación diseñada para que los estudiantes universitarios compartan reseñas y opiniones sobre sus profesores, ayudando a otros estudiantes a tomar decisiones informadas al momento de inscribir sus materias. Con esta herramienta, podrás encontrar información basada en la experiencia de tus compañeros, lo que te permitirá elegir a los profesores que mejor se adapten a tus necesidades académicas.',
                       style: TextStyle(color: Colors.white),
                     ),
 
                     SizedBox(height: 20),
-                    Text('¿Como funciona?'),
+                    Text(
+                      '¿Como funciona?', 
+                      style:  TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+
+                      ),
+                      
+                    
+                      ),
+
                     SizedBox(height: 20),
-                    Expanded(child: ListView(
-                      children: [
-                        ListTile(
+                    
+                    ListTile(
                             
-                            title: Text('Filtra las reseñas por facultad, carrera y materia para obtener resultados personalizados.', style: TextStyle(color: Colors.white)),
+                            title: Text('- Filtra las reseñas por facultad, carrera y materia para obtener resultados personalizados.', style: TextStyle(color: Colors.white)),
                           ),
                           ListTile(
                             
-                            title: Text('Cada profesor cuenta con una página de perfil donde puedes ver calificaciones en aspectos como claridad, metodología de enseñanza y evaluación, y actitud hacia los estudiantes.', style: TextStyle(color: Colors.white)),
+                            title: Text('- Cada profesor cuenta con una página de perfil donde puedes ver calificaciones en aspectos como claridad, metodología de enseñanza y evaluación, y actitud hacia los estudiantes.', style: TextStyle(color: Colors.white)),
                           ),
                           ListTile(
                             
-                            title: Text('Los comentarios detallados te ofrecerán una visión completa del estilo de enseñanza y ambiente en el aula.', style: TextStyle(color: Colors.white)),
+                            title: Text('- Los comentarios detallados te ofrecerán una visión completa del estilo de enseñanza y ambiente en el aula.', style: TextStyle(color: Colors.white)),
                           ),
-                      ],
-                    ))
+                  
                   ],
 
 
                 ),
 
             ),
+            
+            
+            const SizedBox(width: 50), // Espacio entre el logo y el botón de login
+
+            Image.asset(
+              'assets/logo_v.png',
+              fit: BoxFit.contain,
+              width: 500,
+              height: 500,
+              
+              
+            )
           ],
 
         ),
