@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        
         title: Row(
           children: <Widget>[
             // Logo a la izquierda
@@ -44,7 +45,7 @@ class Login extends StatelessWidget {
             },
             style: TextButton.styleFrom(backgroundColor: const Color(0xFF2b448c) ),
             child: const Text(
-              'Login',
+              'Registro',
               style: TextStyle(
                 color: Colors.white, 
                 fontWeight: FontWeight.w700,
@@ -55,10 +56,18 @@ class Login extends StatelessWidget {
           const SizedBox(width: 16),
           
         ],
-        
+
+
+
+
+
       ),
 
-      backgroundColor: Colors.grey[300],
+
+
+
+
+
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(20),
@@ -131,12 +140,12 @@ class Login extends StatelessWidget {
               const SizedBox(height: 40,),
               //botón de login
               SizedBox(
-                width: 100,
+                width: 130,
                 height: 50,
                 child: ElevatedButton(onPressed: () => {}, 
               style: TextButton.styleFrom(backgroundColor: const Color(0xFF2b448c),),
               
-              child: const Text('Login',
+              child: const Text('Register',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,
@@ -148,6 +157,12 @@ class Login extends StatelessWidget {
           ),
           
         ),
+
+
+
+
+
+
       ),
     );
   }
