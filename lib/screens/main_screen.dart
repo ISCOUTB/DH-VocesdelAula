@@ -52,12 +52,7 @@ class MainEscreen extends StatelessWidget {
           TextButton(
             onPressed: () {
             
-            /*
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Login()),  // Navegar a la segunda página
-            );
-            */ 
+              Navigator.pushNamed(context, '/login');
 
               // Acción del primer botón
               print('Login button pressed');
@@ -79,12 +74,7 @@ class MainEscreen extends StatelessWidget {
           TextButton(
             onPressed: () {
               
-            /*
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Register()),  // Navegar a la segunda página
-            );
-            */ 
+              Navigator.pushNamed(context, '/register');
               // Acción del segundo botón
               print('Register button pressed');
             },

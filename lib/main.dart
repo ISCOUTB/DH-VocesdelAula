@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:voces_de_aula/screens/login_screen.dart';
 import 'package:voces_de_aula/screens/main_screen.dart';
+import 'package:voces_de_aula/screens/register_screen.dart';
 
 
 void main() => runApp(const MyApp());
@@ -13,10 +15,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Voces de aula',
       routes: {
-        'main' : (_) => const MainEscreen(), 
+        '/main' : (_) => const MainEscreen(),
+        '/login' : (_) => const LoginScreen(),
+        '/register' : (_) => const RegisterScreen(),
       },
 
-      initialRoute: 'main',
+      initialRoute: '/main',
 
 
 
