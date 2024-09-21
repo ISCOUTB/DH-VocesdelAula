@@ -55,7 +55,7 @@ class MainEscreen extends StatelessWidget {
               Navigator.pushNamed(context, '/login');
 
               // Acción del primer botón
-              print('Login button pressed');
+              
               
             },
             style: TextButton.styleFrom(backgroundColor: Colors.transparent),
@@ -76,7 +76,7 @@ class MainEscreen extends StatelessWidget {
               
               Navigator.pushNamed(context, '/register');
               // Acción del segundo botón
-              print('Register button pressed');
+              
             },
             style: TextButton.styleFrom(backgroundColor: Colors.transparent),
             child: const Text(
