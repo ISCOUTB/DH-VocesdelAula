@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,14 +14,20 @@ class _LoginScreenState extends State<LoginScreen> {
   String _password = '';
 
   // Simulación de autenticación
-  void _login() {
+  Future<void> _login() async {
     if (_loginKey.currentState!.validate()) {
       _loginKey.currentState!.save();
 
       // Simulación de autenticación (puedes conectar a un backend real)
-      if (_email == 'admin@admin.com' && _password == '1234') {
+      // Obtener las credenciales almacenadas en SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? savedEmail = prefs.getString('email');
+      String? savedPassword = prefs.getString('password');
+
+      // Verificar si las credenciales coinciden
+      if (savedEmail == _email && savedPassword == _password) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login exitoso')),
+          SnackBar(content: Text('Inicio de sesión exitoso')),
         );
 
         // Navegar a la pantalla principal

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -10,8 +11,7 @@ class RegisterScreen extends StatefulWidget {
 class _LoginScreenState extends State<RegisterScreen> {
   final _registerKey = GlobalKey<FormState>();
 
-  // Simulación de almacenamiento de usuarios registrados
-  List<Map<String, String>> _registeredUsers = [];
+
 
   // Variables para almacenar las credenciales
   String _email = '';
@@ -20,28 +20,23 @@ class _LoginScreenState extends State<RegisterScreen> {
   String _code = '';
 
   // Función para registrar al usuario
-  void _register() {
+  void _register() async {
     if (_registerKey.currentState!.validate()) {
-      // Guardar datos
       _registerKey.currentState!.save();
 
-      // Almacenar las credenciales
-      _registeredUsers.add({
-        'email': _email,
-        'password': _password,
-        'name': _name,
-        'code': _code,
-      });
+      // Guardar credenciales en SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('email', _email);
+      await prefs.setString('password', _password);
+      await prefs.setString('name', _name);
+      await prefs.setString('code', _code);
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Registro exitoso para $_name')),
       );
 
-      // Imprimir en consola (opcional para verificar)
-      print(_registeredUsers);
-
       // Redirigir o realizar alguna acción después del registro (opcional)
-
+      Navigator.pushNamed(context, '/login');
     }
   }
 
