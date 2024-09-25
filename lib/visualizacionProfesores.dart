@@ -44,7 +44,7 @@ class ProfesorRatingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Nombre del Profesor',
+                      'Harold Rodriguez',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -72,11 +72,54 @@ class ProfesorRatingPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildClassBox('Robotica'),
-                _buildClassBox('Física'),
-                _buildClassBox('S.M.P.'),
-                _buildClassBox('Proyecto I'),
-                _buildClassBox('S.A.P'),
+                Container(
+                  padding: EdgeInsets.all(10),         // Padding dentro del contenedor
+                  margin: EdgeInsets.all(5),           // Margen externo del contenedor
+                  decoration: BoxDecoration(
+                    color: Colors.green,               // Color de fondo
+                    borderRadius: BorderRadius.circular(10), // Bordes redondeados
+                    boxShadow: [                       // Sombras alrededor del contenedor
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 10,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
+                  child: Text('ROBOTICA'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),         // Padding dentro del contenedor
+                  margin: EdgeInsets.all(5),           // Margen externo del contenedor
+                  decoration: BoxDecoration(
+                    color: Colors.green,               // Color de fondo
+                    borderRadius: BorderRadius.circular(10), // Bordes redondeados
+                    boxShadow: [                       // Sombras alrededor del contenedor
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 10,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
+                  child: Text('S.M.P.'),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),         // Padding dentro del contenedor
+                  margin: EdgeInsets.all(5),           // Margen externo del contenedor
+                  decoration: BoxDecoration(
+                    color: Colors.green,               // Color de fondo
+                    borderRadius: BorderRadius.circular(10), // Bordes redondeados
+                    boxShadow: [                       // Sombras alrededor del contenedor
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 10,
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
+                  child: Text('PROYECTO I'),
+                ),
               ],
             ),
             SizedBox(height: 30),
