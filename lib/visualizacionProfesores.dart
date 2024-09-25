@@ -70,57 +70,12 @@ class ProfesorRatingPage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),         // Padding dentro del contenedor
-                  margin: EdgeInsets.all(5),           // Margen externo del contenedor
-                  decoration: BoxDecoration(
-                    color: Colors.green,               // Color de fondo
-                    borderRadius: BorderRadius.circular(10), // Bordes redondeados
-                    boxShadow: [                       // Sombras alrededor del contenedor
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 10,
-                        offset: Offset(2, 2),
-                      ),
-                    ],
-                  ),
-                  child: Text('ROBOTICA'),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),         // Padding dentro del contenedor
-                  margin: EdgeInsets.all(5),           // Margen externo del contenedor
-                  decoration: BoxDecoration(
-                    color: Colors.green,               // Color de fondo
-                    borderRadius: BorderRadius.circular(10), // Bordes redondeados
-                    boxShadow: [                       // Sombras alrededor del contenedor
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 10,
-                        offset: Offset(2, 2),
-                      ),
-                    ],
-                  ),
-                  child: Text('S.M.P.'),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),         // Padding dentro del contenedor
-                  margin: EdgeInsets.all(5),           // Margen externo del contenedor
-                  decoration: BoxDecoration(
-                    color: Colors.green,               // Color de fondo
-                    borderRadius: BorderRadius.circular(10), // Bordes redondeados
-                    boxShadow: [                       // Sombras alrededor del contenedor
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 10,
-                        offset: Offset(2, 2),
-                      ),
-                    ],
-                  ),
-                  child: Text('PROYECTO I'),
-                ),
-              ],
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  HoverContainer(texto: 'ROBOTICA'),
+                  HoverContainer(texto: 'S.M.P.'),
+                  HoverContainer(texto: 'PROYECTO I'),
+                ],
             ),
             SizedBox(height: 30),
             
@@ -163,20 +118,51 @@ class ProfesorRatingPage extends StatelessWidget {
     );
   }
 
-  // Widget para mostrar cada caja de clase
-  Widget _buildClassBox(String className) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Text(
-        className,
-        style: TextStyle(
-          fontSize: 14,
+}
+// Widget personalizado para cada HoverContainer
+class HoverContainer extends StatefulWidget {
+  final String texto;
+  
+  HoverContainer({required this.texto});
+  
+  @override
+  _HoverContainerState createState() => _HoverContainerState();
+}
+
+class _HoverContainerState extends State<HoverContainer> {
+  Color containerColor = Colors.grey;  // Color inicial
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (event) => _updateColor(Colors.blue),  // Cambiar a rojo cuando el mouse entra
+      onExit: (event) => _updateColor(Colors.grey), // Volver a verde cuando el mouse sale
+      child: Container(
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: containerColor,  // Cambia según el estado del hover
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10,
+              offset: Offset(2, 2),
+            ),
+          ],
+        ),
+        child: Text(
+          widget.texto,
+          style: TextStyle(color: Colors.white),  // Estilizar el texto
         ),
       ),
     );
+  }
+
+  // Función para actualizar el color
+  void _updateColor(Color color) {
+    setState(() {
+      containerColor = color;
+    });
   }
 }
