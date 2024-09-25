@@ -87,19 +87,7 @@ class ProfesorRatingPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(12),
-                color: Colors.grey[300],
-                child: SingleChildScrollView(
-                  child: Text(
-                    'Aquí se mostrarían los comentarios que los estudiantes dejan sobre el profesor.',
-                    style: TextStyle(fontSize: 14),
-                  ),
-                ),
-              ),
-            ),
+            ComentariosList(),
           ],
         ),
       ),
@@ -164,5 +152,83 @@ class _HoverContainerState extends State<HoverContainer> {
     setState(() {
       containerColor = color;
     });
+  }
+}
+
+class ComentariosList extends StatelessWidget {
+  // Ejemplo de datos de comentarios (puedes reemplazarlo por datos dinámicos)
+  final List<Map<String, dynamic>> comentarios = [
+    {
+      'nombre': 'Juan Pérez',
+      'rating': 4.0,
+      'comentario': 'Excelente profesor, muy claro en sus explicaciones.'
+    },
+    {
+      'nombre': 'Ana López',
+      'rating': 3.5,
+      'comentario': 'Buena clase, pero a veces es un poco acelerado.'
+    },
+    {
+      'nombre': 'Carlos Martínez',
+      'rating': 5.0,
+      'comentario': 'Uno de los mejores profesores que he tenido, muy paciente.'
+    },
+    {
+      'nombre': 'María Gómez',
+      'rating': 4.5,
+      'comentario': 'Buen profesor, aunque los exámenes son difíciles.'
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.all(12),
+        color: Colors.grey[300],
+        child: ListView.builder(
+          itemCount: comentarios.length,
+          itemBuilder: (context, index) {
+            final comentario = comentarios[index];
+            return Card(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          comentario['nombre'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        // Aquí se reemplaza las estrellas por el rating en número
+                        Text(
+                          '${comentario['rating'].toString()}/5',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      comentario['comentario'],
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
