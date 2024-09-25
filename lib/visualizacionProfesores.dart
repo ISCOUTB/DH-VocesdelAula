@@ -21,7 +21,7 @@ class ProfesorRatingPage extends StatelessWidget {
         backgroundColor: Color(0xFF2C4293), // Azul oscuro
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,8 +31,8 @@ class ProfesorRatingPage extends StatelessWidget {
               children: [
                 // Imagen de perfil
                 Container(
-                  width: 80,
-                  height: 80,
+                  width: 90,
+                  height: 110,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(10),
@@ -64,7 +64,7 @@ class ProfesorRatingPage extends StatelessWidget {
             Text(
               'Clases:',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -72,9 +72,11 @@ class ProfesorRatingPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildClassBox('Matemáticas'),
+                _buildClassBox('Robotica'),
                 _buildClassBox('Física'),
-                _buildClassBox('Química'),
+                _buildClassBox('S.M.P.'),
+                _buildClassBox('Proyecto I'),
+                _buildClassBox('S.A.P'),
               ],
             ),
             SizedBox(height: 30),
