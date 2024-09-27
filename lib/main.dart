@@ -1,32 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:voces_de_aula/screens/login_screen.dart';
-import 'package:voces_de_aula/screens/main_screen.dart';
-import 'package:voces_de_aula/screens/register_screen.dart';
+import 'package:voces_de_aula/Inicio/assets/Login_screens.dart';
 
+void main() => runApp(const Voces_del_Aula());
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// ignore: camel_case_types
+class Voces_del_Aula extends StatelessWidget {
+  const Voces_del_Aula({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Voces de aula',
-      routes: {
-        '/main' : (_) => const MainEscreen(),
-        '/login' : (_) => const LoginScreen(),
-        '/register' : (_) => const RegisterScreen(),
-      },
-
-      initialRoute: '/main',
-
-
-
+      title: 'Voces de Aula',
+      home: LoginScreens(),
     );
-
-
-
   }
 }
