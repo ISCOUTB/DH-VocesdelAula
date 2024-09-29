@@ -3,6 +3,7 @@ import 'package:voces_de_aula/screens/login_screen.dart';
 import 'package:voces_de_aula/screens/main_screen.dart';
 import 'package:voces_de_aula/screens/register_screen.dart';
 import 'package:voces_de_aula/screens/temporal.dart';
+import 'package:voces_de_aula/visualizacionProfesores.dart';
 
 
 void main() => runApp(const MyApp());
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/login' : (_) => const LoginScreen(),
         '/register' : (_) => const RegisterScreen(),
         '/temporal' : (_) => const Temporal(),
+        '/visualizacion' : (_) => ProfesorRatingApp(),
       },
 
       initialRoute: '/main',
