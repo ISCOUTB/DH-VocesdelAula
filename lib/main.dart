@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         '/profesor' : (_) => const ProfesorRatingApp(),
       },
 
-      initialRoute: '/profesor',
+      initialRoute: '/main',
 
 
 
