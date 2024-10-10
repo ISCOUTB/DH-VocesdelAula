@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:voces_de_aula/screens/login_screen.dart';
 import 'package:voces_de_aula/screens/main_screen.dart';
 import 'package:voces_de_aula/screens/register_screen.dart';
-import 'package:voces_de_aula/screens/temporal.dart';
-import 'package:voces_de_aula/visualizacionProfesores.dart';
+
+
+import 'screens/visualizacionProfesores.dart';
 
 
 void main() => runApp(const MyApp());
@@ -20,8 +21,7 @@ class MyApp extends StatelessWidget {
         '/main' : (_) => const MainEscreen(),
         '/login' : (_) => const LoginScreen(),
         '/register' : (_) => const RegisterScreen(),
-        '/temporal' : (_) => const Temporal(),
-        '/visualizacion' : (_) => ProfesorRatingApp(),
+        '/prfesor' : (_) => const ProfesorRatingApp(),
       },
 
       initialRoute: '/main',
