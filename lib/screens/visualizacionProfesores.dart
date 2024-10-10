@@ -2,27 +2,82 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const ProfesorRatingApp());
 
-class ProfesorRatingApp extends StatelessWidget {
+class ProfesorRatingApp extends StatefulWidget {
   const ProfesorRatingApp({super.key});
 
+  
+
+  @override
+  State<ProfesorRatingApp> createState() => _ProfesorRatingAppState();
+}
+
+
+class _ProfesorRatingAppState extends State<ProfesorRatingApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
+      debugShowCheckedModeBanner: false,
       title: 'Clasificación de Profesores',
-      home: ProfesorRatingPage(),
+      theme: ThemeData(
+        primaryColor: const Color(0xFF2b448c),
+        hintColor: const Color(0xFF2f4f8d),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.grey[800],
+          ),
+        ),
+      ),
+      home: const ProfesorRatingPage(),
     );
   }
 }
 
 class ProfesorRatingPage extends StatelessWidget {
+  const ProfesorRatingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Clasificación de Profesores'),
-        backgroundColor: Color(0xFF2C4293), // Azul oscuro
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF2b448c), Color(0xFF2f4f8d)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            title: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: Image.asset(
+                    'assets/logo_v.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(width: 15),
+                const Text(
+                  'Clasificación del Profesor',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 1.6,
+                    color: Colors.white,
+                    fontSize: 21,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,75 +88,100 @@ class ProfesorRatingPage extends StatelessWidget {
               children: [
                 // Imagen de perfil
                 Container(
-                  width: 90,
-                  height: 110,
+                  width: 100,
+                  height: 120,
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[400],
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius: 3,
+                        blurRadius: 6,
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      'assets/foto_usuario.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 20),
                 // Nombre del profesor y calificaciones
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Nombre del Profesor',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 6),
+                    const Text(
+                      "Facultad de Ingeniería",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(height: 15),
                     _buildStars(5, filledStars: 4), // Calificación general
-                    SizedBox(height: 8),
-                    _buildStars(5, filledStars: 2), // Otra calificación
                   ],
                 ),
               ],
             ),
-            SizedBox(height: 30),
-            
+            const SizedBox(height: 30),
             // Sección de Clases
-            Text(
+            const Text(
               'Clases:',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildClassBox('Robotica'),
-                _buildClassBox('Física'),
-                _buildClassBox('S.M.P.'),
-                _buildClassBox('Proyecto I'),
-                _buildClassBox('S.A.P'),
+                _buildClassBox('Robótica', boxColor: Colors.grey[400]!),
+                _buildClassBox('Física', boxColor: Colors.grey[400]!),
+                _buildClassBox('S.M.P.', boxColor: Colors.grey[400]!),
+                _buildClassBox('Proyecto I', boxColor: Colors.grey[400]!),
+                _buildClassBox('S.A.P', boxColor: Colors.grey[400]!),
               ],
             ),
-            SizedBox(height: 30),
-            
+            const SizedBox(height: 30),
             // Sección de Comentarios
-            Text(
+            const Text(
               'Comentarios:',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(12),
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
                 color: Colors.grey[300],
-                child: SingleChildScrollView(
-                  child: Text(
-                    'Aquí se mostrarían los comentarios que los estudiantes dejan sobre el profesor.',
-                    style: TextStyle(fontSize: 14),
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 3,
+                    blurRadius: 5,
                   ),
-                ),
+                ],
+              ),
+              child: const Text(
+                'Aquí se mostrarían los comentarios que los estudiantes dejan sobre el profesor.',
+                style: TextStyle(fontSize: 14),
               ),
             ),
           ],
@@ -116,26 +196,36 @@ class ProfesorRatingPage extends StatelessWidget {
       children: List.generate(totalStars, (index) {
         return Icon(
           index < filledStars ? Icons.star : Icons.star_border,
-          color: index < filledStars ? Colors.yellow : Colors.grey,
+          color: index < filledStars ? Colors.amber : Colors.grey,
+          size: 20,
         );
       }),
     );
   }
 
   // Widget para mostrar cada caja de clase
-  Widget _buildClassBox(String className) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Text(
-        className,
-        style: TextStyle(
-          fontSize: 14,
+Widget _buildClassBox(String className, {Color boxColor = Colors.grey}) {
+  return Container(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    decoration: BoxDecoration(
+      color: boxColor, // Se define el color del contenedor
+      borderRadius: BorderRadius.circular(8),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.2),
+          spreadRadius: 2,
+          blurRadius: 4,
         ),
+      ],
+    ),
+    child: Text(
+      className,
+      style: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

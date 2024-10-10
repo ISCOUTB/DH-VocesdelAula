@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
 
         // Navegar a la pantalla principal
-        Navigator.pushNamed(context, '/visualizacion');
+        Navigator.pushNamed(context, '/profesor');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Correo o contraseña incorrectos')),

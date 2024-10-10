@@ -3,8 +3,10 @@ import 'package:voces_de_aula/screens/login_screen.dart';
 import 'package:voces_de_aula/screens/main_screen.dart';
 import 'package:voces_de_aula/screens/register_screen.dart';
 
+import 'package:voces_de_aula/screens/visualizacionProfesores.dart';
 
-import 'screens/visualizacionProfesores.dart';
+
+
 
 
 void main() => runApp(const MyApp());
@@ -21,10 +23,10 @@ class MyApp extends StatelessWidget {
         '/main' : (_) => const MainEscreen(),
         '/login' : (_) => const LoginScreen(),
         '/register' : (_) => const RegisterScreen(),
-        '/prfesor' : (_) => const ProfesorRatingApp(),
+        '/profesor' : (_) => const ProfesorRatingApp(),
       },
 
-      initialRoute: '/main',
+      initialRoute: '/profesor',
 
 
 
