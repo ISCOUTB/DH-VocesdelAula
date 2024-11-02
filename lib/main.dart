@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         '/profesor3': (_) => const ProfesorRatingApp3(),
         '/profesor4': (_) => const ProfesorRatingApp4(),
       },
-      initialRoute: '/home',
+      initialRoute: '/main',
     );
   }
 }

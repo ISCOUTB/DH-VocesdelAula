@@ -137,8 +137,24 @@ class _HomeState extends State<Home> {
             ),
             Column(
               children: [
+                const SizedBox(height: 25), // Espacio superior
                 Container(
-                  margin: EdgeInsets.only(top: 25, left: 25),
+                  margin: EdgeInsets.only(left: 25),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  width: size.width * 0.8,
+                  child: const Text(
+                    '¿A quien buscas?',
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2f4f8d)),
+                  ),
+                ),
+                const SizedBox(
+                    height:
+                        5), // Espacio entre el título y la barra de búsqueda
+                Container(
+                  margin: EdgeInsets.only(left: 25),
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   width: size.width * 0.8,
                   child: TextField(

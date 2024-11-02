@@ -28,8 +28,8 @@ class MainEscreen extends StatelessWidget {
                   width: 24,
                   height: 24,
                   child: Image.asset(
-                    'assets/logo_v.png',
-                    fit: BoxFit.contain,
+                    'assets/logo_sin_letras.png',
+                    fit: BoxFit.fill,
                   ),
                 ),
 
