@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const ProfesorRatingApp());
+void main() => runApp(const ProfesorRatingApp4());
 
-class ProfesorRatingApp extends StatefulWidget {
-  const ProfesorRatingApp({super.key});
+class ProfesorRatingApp4 extends StatefulWidget {
+  const ProfesorRatingApp4({super.key});
 
   @override
-  State<ProfesorRatingApp> createState() => _ProfesorRatingAppState();
+  State<ProfesorRatingApp4> createState() => _ProfesorRatingAppState();
 }
 
-class _ProfesorRatingAppState extends State<ProfesorRatingApp> {
+class _ProfesorRatingAppState extends State<ProfesorRatingApp4> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -111,7 +111,7 @@ class ProfesorRatingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Nombre del Profesor',
+                      'Nombre del Profesor #4',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -127,7 +127,7 @@ class ProfesorRatingPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    _buildStars(5, filledStars: 4), // Calificación general
+                    _buildStars(5, filledStars: 0), // Calificación general
                   ],
                 ),
               ],
@@ -145,11 +145,9 @@ class ProfesorRatingPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildClassBox('Robótica', boxColor: Colors.grey[400]!),
-                _buildClassBox('Física', boxColor: Colors.grey[400]!),
-                _buildClassBox('S.M.P.', boxColor: Colors.grey[400]!),
-                _buildClassBox('Proyecto I', boxColor: Colors.grey[400]!),
-                _buildClassBox('S.A.P', boxColor: Colors.grey[400]!),
+                _buildClassBox('Calculo I', boxColor: Colors.grey[400]!),
+                _buildClassBox('Calculo II', boxColor: Colors.grey[400]!),
+                _buildClassBox('Calculo III', boxColor: Colors.grey[400]!),
               ],
             ),
             const SizedBox(height: 30),

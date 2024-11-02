@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const ProfesorRatingApp());
+void main() => runApp(const ProfesorRatingApp2());
 
-class ProfesorRatingApp extends StatefulWidget {
-  const ProfesorRatingApp({super.key});
+class ProfesorRatingApp2 extends StatefulWidget {
+  const ProfesorRatingApp2({super.key});
 
   @override
-  State<ProfesorRatingApp> createState() => _ProfesorRatingAppState();
+  State<ProfesorRatingApp2> createState() => _ProfesorRatingAppState();
 }
 
-class _ProfesorRatingAppState extends State<ProfesorRatingApp> {
+class _ProfesorRatingAppState extends State<ProfesorRatingApp2> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -111,7 +111,7 @@ class ProfesorRatingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Nombre del Profesor',
+                      'Nombre del Profesor #2',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -127,7 +127,7 @@ class ProfesorRatingPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    _buildStars(5, filledStars: 4), // Calificación general
+                    _buildStars(5, filledStars: 5), // Calificación general
                   ],
                 ),
               ],
@@ -145,11 +145,13 @@ class ProfesorRatingPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildClassBox('Robótica', boxColor: Colors.grey[400]!),
-                _buildClassBox('Física', boxColor: Colors.grey[400]!),
-                _buildClassBox('S.M.P.', boxColor: Colors.grey[400]!),
-                _buildClassBox('Proyecto I', boxColor: Colors.grey[400]!),
-                _buildClassBox('S.A.P', boxColor: Colors.grey[400]!),
+                _buildClassBox('Etica', boxColor: Colors.grey[400]!),
+                _buildClassBox('Ciudadania global',
+                    boxColor: Colors.grey[400]!),
+                _buildClassBox('Constitución politica',
+                    boxColor: Colors.grey[400]!),
+                _buildClassBox('Escritura etnografica',
+                    boxColor: Colors.grey[400]!),
               ],
             ),
             const SizedBox(height: 30),
