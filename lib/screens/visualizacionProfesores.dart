@@ -162,8 +162,10 @@ class ProfesorRatingPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
+            // Ejemplo de comentario
             Container(
               padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(12),
@@ -175,9 +177,45 @@ class ProfesorRatingPage extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Text(
-                'Aquí se mostrarían los comentarios que los estudiantes dejan sobre el profesor.',
-                style: TextStyle(fontSize: 14),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Nombre de la persona que hace el comentario',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 43, 185, 217)),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Nombre de la persona que hace el comentario',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 43, 185, 217)),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
