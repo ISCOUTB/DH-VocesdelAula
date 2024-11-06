@@ -115,7 +115,9 @@ class _HomeState extends State<Home> {
                               label: const Text('Configuraciones')),
                           const SizedBox(height: 20),
                           ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/profile');
+                              },
                               icon: const Icon(Icons.person, size: 24),
                               label: const Text('Perfil')),
                           const SizedBox(height: 20),

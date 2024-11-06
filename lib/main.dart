@@ -4,6 +4,7 @@ import 'package:voces_de_aula/screens/main_screen.dart';
 import 'package:voces_de_aula/screens/profesor2.dart';
 import 'package:voces_de_aula/screens/profesor3.dart';
 import 'package:voces_de_aula/screens/profesor4.dart';
+import 'package:voces_de_aula/screens/profile_screen.dart';
 import 'package:voces_de_aula/screens/register_screen.dart';
 import 'package:voces_de_aula/screens/home.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         '/profesor2': (_) => const ProfesorRatingApp2(),
         '/profesor3': (_) => const ProfesorRatingApp3(),
         '/profesor4': (_) => const ProfesorRatingApp4(),
+        '/profile': (_) => const ProfileScreen(),
       },
       initialRoute: '/main',
     );
