@@ -7,6 +7,7 @@ import 'package:voces_de_aula/screens/profesor4.dart';
 import 'package:voces_de_aula/screens/profile_screen.dart';
 import 'package:voces_de_aula/screens/register_screen.dart';
 import 'package:voces_de_aula/screens/home.dart';
+import 'package:voces_de_aula/screens/asignaturas.dart';
 
 import 'package:voces_de_aula/screens/visualizacionProfesores.dart';
 
@@ -30,8 +31,9 @@ class MyApp extends StatelessWidget {
         '/profesor3': (_) => const ProfesorRatingApp3(),
         '/profesor4': (_) => const ProfesorRatingApp4(),
         '/profile': (_) => const ProfileScreen(),
+        '/asignaturas': (_) => const Asignaturas(),
       },
-      initialRoute: '/main',
+      initialRoute: '/asignaturas',
     );
   }
 }
