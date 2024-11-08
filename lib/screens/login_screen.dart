@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
         );
 
         // Navegar a la pantalla principal
-        Navigator.pushNamed(context, '/temporal');
+        Navigator.pushNamed(context, '/home');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Correo o contraseña incorrectos')),
@@ -115,7 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Container(
-                    margin: const EdgeInsets.only(top: 120, left: 20, right: 20),
+                    margin:
+                        const EdgeInsets.only(top: 120, left: 20, right: 20),
                     width: 470,
                     height: 300,
                     decoration: BoxDecoration(
@@ -138,7 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             margin: const EdgeInsets.only(top: 30),
                             width: 400,
                             child: TextFormField(
-                              decoration: const InputDecoration(labelText: 'Email'),
+                              decoration:
+                                  const InputDecoration(labelText: 'Email'),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Por favor ingresa tu correo';
@@ -155,7 +157,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             margin: const EdgeInsets.only(top: 30),
                             width: 400,
                             child: TextFormField(
-                              decoration: const InputDecoration(labelText: 'Contraseña'),
+                              decoration: const InputDecoration(
+                                  labelText: 'Contraseña'),
                               obscureText: true,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
