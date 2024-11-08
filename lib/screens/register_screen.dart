@@ -11,8 +11,6 @@ class RegisterScreen extends StatefulWidget {
 class _LoginScreenState extends State<RegisterScreen> {
   final _registerKey = GlobalKey<FormState>();
 
-
-
   // Variables para almacenar las credenciales
   String _email = '';
   String _password = '';
@@ -120,7 +118,8 @@ class _LoginScreenState extends State<RegisterScreen> {
                   child: Align(
                     alignment: Alignment.center,
                     child: Container(
-                      margin: const EdgeInsets.only(top: 120, left: 20, right: 20),
+                      margin:
+                          const EdgeInsets.only(top: 120, left: 20, right: 20),
                       width: 500,
                       height: 450,
                       decoration: BoxDecoration(
@@ -143,7 +142,8 @@ class _LoginScreenState extends State<RegisterScreen> {
                               margin: const EdgeInsets.only(top: 30),
                               width: 400,
                               child: TextFormField(
-                                decoration: const InputDecoration(labelText: 'Email'),
+                                decoration:
+                                    const InputDecoration(labelText: 'Email'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Por favor ingresa tu correo';
@@ -160,7 +160,8 @@ class _LoginScreenState extends State<RegisterScreen> {
                               margin: const EdgeInsets.only(top: 30),
                               width: 400,
                               child: TextFormField(
-                                decoration: const InputDecoration(labelText: 'Password'),
+                                decoration: const InputDecoration(
+                                    labelText: 'Password'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Por favor ingresa tu contraseña';
@@ -177,7 +178,8 @@ class _LoginScreenState extends State<RegisterScreen> {
                               margin: const EdgeInsets.only(top: 30),
                               width: 400,
                               child: TextFormField(
-                                decoration: const InputDecoration(labelText: 'Nombre'),
+                                decoration:
+                                    const InputDecoration(labelText: 'Nombre'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Por favor ingresa tu nombre';
@@ -194,7 +196,8 @@ class _LoginScreenState extends State<RegisterScreen> {
                               margin: const EdgeInsets.only(top: 30),
                               width: 400,
                               child: TextFormField(
-                                decoration: const InputDecoration(labelText: 'Código T000'),
+                                decoration: const InputDecoration(
+                                    labelText: 'Código T000'),
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
                                     return 'Por favor ingresa tu código';
