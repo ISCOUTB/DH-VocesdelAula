@@ -14,6 +14,7 @@ import 'package:voces_de_aula/screens/asignaturas.dart';
 import 'package:voces_de_aula/screens/visualizacionProfesores.dart';
 
 //----------MOVIL!!!!!-------------//
+import 'package:voces_de_aula/screens/movil/movil_main.dart';
 
 //----------------------------------------------------------------
 void main() => runApp(const MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Voces de aula',
       routes: {
+        //--------WEB--------//
         '/main': (_) => const MainEscreen(),
         '/login': (_) => const LoginScreen(),
         '/register': (_) => const RegisterScreen(),
@@ -37,10 +39,10 @@ class MyApp extends StatelessWidget {
         '/profesor4': (_) => const ProfesorRatingApp4(),
         '/profile': (_) => const ProfileScreen(),
         '/asignaturas': (_) => const Asignaturas(),
+        //----------MOVIL-------//
+        '/movil_main': (_) => const MovilMain(),
       },
-      initialRoute: kIsWeb
-          ? '/main'
-          : '/asignaturas', // Usa rutas diferentes para web y móvil
+      initialRoute: kIsWeb ? '/main' : '/movil_main',
     );
   }
 }
