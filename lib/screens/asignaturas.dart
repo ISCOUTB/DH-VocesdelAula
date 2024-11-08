@@ -64,16 +64,15 @@ class _AsignaturasState extends State<Asignaturas> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    decoration: BoxDecoration(
-                        color: Color(0xFF088c5c),
-                        borderRadius: BorderRadius.circular(20)),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
                     margin: EdgeInsets.all(20),
                     padding: const EdgeInsets.only(
                         left: 26, right: 26, top: 10, bottom: 10),
                     child: Text(
                       'Asignaturas:',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.grey[600],
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
                       ),
