@@ -22,18 +22,18 @@ class _TemporalState extends State<Temporal> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               IconButton(
-                icon: Icon(Icons.menu, color: Colors.white),
+                icon: const Icon(Icons.menu, color: Colors.white),
                 onPressed: () {
                   // Puedes abrir un Drawer manualmente
                   print('Menú presionado');
                 },
               ),
-              Text(
+              const Text(
                 'Mi AppBar',
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               IconButton(
-                icon: Icon(Icons.search, color: Colors.white),
+                icon: const Icon(Icons.search, color: Colors.white),
                 onPressed: () {
                   // Acción de búsqueda
                   print('Buscar');

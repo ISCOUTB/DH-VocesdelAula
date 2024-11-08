@@ -167,7 +167,7 @@ class ProfesorRatingPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(36),
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(12),

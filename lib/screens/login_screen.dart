@@ -27,14 +27,14 @@ class _LoginScreenState extends State<LoginScreen> {
       // Verificar si las credenciales coinciden
       if (savedEmail == _email && savedPassword == _password) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Inicio de sesión exitoso')),
+          const SnackBar(content: Text('Inicio de sesión exitoso')),
         );
 
         // Navegar a la pantalla principal
         Navigator.pushNamed(context, '/profesor');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Correo o contraseña incorrectos')),
+          const SnackBar(content: Text('Correo o contraseña incorrectos')),
         );
       }
     }
@@ -204,13 +204,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
 // Pantalla principal
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Página Principal'),
+        title: const Text('Página Principal'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Bienvenido a la página principal!'),
       ),
     );
