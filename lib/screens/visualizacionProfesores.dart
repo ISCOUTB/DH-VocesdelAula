@@ -29,8 +29,26 @@ class _ProfesorRatingAppState extends State<ProfesorRatingApp> {
   }
 }
 
-class ProfesorRatingPage extends StatelessWidget {
+class ProfesorRatingPage extends StatefulWidget {
   const ProfesorRatingPage({super.key});
+
+  @override
+  State<ProfesorRatingPage> createState() => _ProfesorRatingPageState();
+}
+
+class _ProfesorRatingPageState extends State<ProfesorRatingPage> {
+  final TextEditingController _commentController = TextEditingController();
+  final List<String> _comments = []; // Lista de comentarios
+
+  void _addComment() {
+    setState(() {
+      if (_commentController.text.isNotEmpty) {
+        _comments.add(_commentController.text);
+        _commentController
+            .clear(); // Limpiar el campo de texto después de enviar
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,62 +180,44 @@ class ProfesorRatingPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            // Ejemplo de comentario
-            Container(
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 3,
-                    blurRadius: 5,
+            // Campo de entrada y botón de enviar
+            SizedBox(
+              width: 600,
+              child: TextField(
+                controller: _commentController,
+                decoration: InputDecoration(
+                  hintText: 'Escribe tu comentario...',
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.comment),
+                    onPressed: _addComment,
                   ),
-                ],
-              ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Nombre de la persona que hace el comentario',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 43, 185, 217)),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Nombre de la persona que hace el comentario',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 43, 185, 217)),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                ],
+                ),
               ),
             ),
+            const SizedBox(height: 20),
+            // Mostrar comentarios
+            ..._comments.map((comment) => SizedBox(
+                  width: 700,
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300],
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 3,
+                          blurRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      comment,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
+                )),
           ],
         ),
       ),
