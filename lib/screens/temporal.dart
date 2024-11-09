@@ -12,7 +12,6 @@ class _TemporalState extends State<Temporal> {
   Widget build(BuildContext context) {
     return Flex(
       direction: Axis.vertical,
-      
       children: [
         Container(
           color: Colors.blueAccent,

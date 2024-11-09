@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const ProfesorRatingApp());
+void main() => runApp(const ProfesorRatingApp3());
 
-class ProfesorRatingApp extends StatefulWidget {
-  const ProfesorRatingApp({super.key});
+class ProfesorRatingApp3 extends StatefulWidget {
+  const ProfesorRatingApp3({super.key});
 
   @override
-  State<ProfesorRatingApp> createState() => _ProfesorRatingAppState();
+  State<ProfesorRatingApp3> createState() => _ProfesorRatingAppState();
 }
 
-class _ProfesorRatingAppState extends State<ProfesorRatingApp> {
+class _ProfesorRatingAppState extends State<ProfesorRatingApp3> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -111,7 +111,7 @@ class ProfesorRatingPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Nombre del Profesor',
+                      'Nombre del Profesor #3',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -127,7 +127,7 @@ class ProfesorRatingPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    _buildStars(5, filledStars: 4), // Calificación general
+                    _buildStars(5, filledStars: 1), // Calificación general
                   ],
                 ),
               ],
@@ -145,11 +145,13 @@ class ProfesorRatingPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildClassBox('Robótica', boxColor: Colors.grey[400]!),
-                _buildClassBox('Física', boxColor: Colors.grey[400]!),
-                _buildClassBox('S.M.P.', boxColor: Colors.grey[400]!),
-                _buildClassBox('Proyecto I', boxColor: Colors.grey[400]!),
-                _buildClassBox('S.A.P', boxColor: Colors.grey[400]!),
+                _buildClassBox('Calculo I', boxColor: Colors.grey[400]!),
+                _buildClassBox('Calculo II', boxColor: Colors.grey[400]!),
+                _buildClassBox('Matematicas basicas',
+                    boxColor: Colors.grey[400]!),
+                _buildClassBox('Algebra lineal', boxColor: Colors.grey[400]!),
+                _buildClassBox('Ecuaciones Diferenciales',
+                    boxColor: Colors.grey[400]!),
               ],
             ),
             const SizedBox(height: 30),
@@ -162,7 +164,6 @@ class ProfesorRatingPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            // Ejemplo de comentario
             Container(
               padding: const EdgeInsets.all(16),
               margin: const EdgeInsets.only(bottom: 10),
