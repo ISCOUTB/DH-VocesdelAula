@@ -4,7 +4,6 @@ import 'package:voces_de_aula/screens/main_screen.dart';
 import 'package:voces_de_aula/screens/register_screen.dart';
 import 'package:voces_de_aula/screens/temporal.dart';
 
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,19 +15,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Voces de aula',
       routes: {
-        '/main' : (_) => const MainEscreen(),
-        '/login' : (_) => const LoginScreen(),
-        '/register' : (_) => const RegisterScreen(),
-        '/temporal' : (_) => const Temporal(),
+        '/main': (_) => const MainEscreen(),
+        '/login': (_) => const LoginScreen(),
+        '/register': (_) => const RegisterScreen(),
+        '/temporal': (_) => const Temporal(),
       },
-
       initialRoute: '/main',
-
-
-
     );
-
-
-
   }
 }
