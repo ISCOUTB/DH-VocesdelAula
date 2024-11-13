@@ -29,8 +29,73 @@ class _ProfesorRatingAppState extends State<ProfesorRatingApp3> {
   }
 }
 
-class ProfesorRatingPage extends StatelessWidget {
+class Comment {
+  final String userName;
+  final String text;
+  final DateTime date;
+
+  Comment({
+    required this.userName,
+    required this.text,
+    required this.date,
+  });
+}
+
+class ProfesorRatingPage extends StatefulWidget {
   const ProfesorRatingPage({super.key});
+
+  @override
+  State<ProfesorRatingPage> createState() => _ProfesorRatingPageState();
+}
+
+class _ProfesorRatingPageState extends State<ProfesorRatingPage> {
+  final List<Comment> _comments = [
+    Comment(
+      userName: 'Juan Pérez',
+      text: 'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
+      date: DateTime.now().subtract(const Duration(days: 2)),
+    ),
+    Comment(
+      userName: 'María García',
+      text: 'Muy buen profesor, sus clases son muy dinámicas y se aprende mucho.',
+      date: DateTime.now().subtract(const Duration(days: 1)),
+    ),
+  ];
+
+  final TextEditingController _commentController = TextEditingController();
+  bool _isCommentEmpty = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _commentController.addListener(() {
+      setState(() {
+        _isCommentEmpty = _commentController.text.trim().isEmpty;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _commentController.dispose();
+    super.dispose();
+  }
+
+  void _addComment() {
+    if (_commentController.text.trim().isNotEmpty) {
+      setState(() {
+        _comments.insert(
+          0,
+          Comment(
+            userName: "Usuario actual",
+            text: _commentController.text.trim(),
+            date: DateTime.now(),
+          ),
+        );
+        _commentController.clear();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,11 +143,9 @@ class ProfesorRatingPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Foto del profesor y nombre
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Imagen de perfil
                 Container(
                   width: 100,
                   height: 120,
@@ -106,7 +169,6 @@ class ProfesorRatingPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 20),
-                // Nombre del profesor y calificaciones
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -127,13 +189,12 @@ class ProfesorRatingPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 15),
-                    _buildStars(5, filledStars: 1), // Calificación general
+                    _buildStars(5, filledStars: 1),
                   ],
                 ),
               ],
             ),
             const SizedBox(height: 30),
-            // Sección de Clases
             const Text(
               'Clases:',
               style: TextStyle(
@@ -147,77 +208,177 @@ class ProfesorRatingPage extends StatelessWidget {
               children: [
                 _buildClassBox('Calculo I', boxColor: Colors.grey[400]!),
                 _buildClassBox('Calculo II', boxColor: Colors.grey[400]!),
-                _buildClassBox('Matematicas basicas',
-                    boxColor: Colors.grey[400]!),
+                _buildClassBox('Matematicas basicas', boxColor: Colors.grey[400]!),
                 _buildClassBox('Algebra lineal', boxColor: Colors.grey[400]!),
-                _buildClassBox('Ecuaciones Diferenciales',
-                    boxColor: Colors.grey[400]!),
+                _buildClassBox('Ecuaciones diferenciales', boxColor: Colors.grey[400]!),
               ],
             ),
             const SizedBox(height: 30),
-            // Sección de Comentarios
-            const Text(
-              'Comentarios:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Comentarios:',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '${_comments.length} comentarios',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 14,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             Container(
               padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.grey[300]!),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 3,
-                    blurRadius: 5,
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 3,
                   ),
                 ],
               ),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Column(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Nombre de la persona que hace el comentario',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 43, 185, 217)),
+                  TextField(
+                    controller: _commentController,
+                    maxLines: 3,
+                    decoration: InputDecoration(
+                      hintText: 'Escribe tu comentario aquí...',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
-                        style: TextStyle(fontSize: 14),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                          color: Color(0xFF2b448c),
+                          width: 2,
+                        ),
                       ),
-                    ],
+                    ),
                   ),
-                  SizedBox(height: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Nombre de la persona que hace el comentario',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 43, 185, 217)),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Excelente profesor, explica los temas de forma clara y siempre está dispuesto a resolver dudas. Recomiendo asistir a sus clases y participar activamente.',
-                        style: TextStyle(fontSize: 14),
+                      ElevatedButton(
+                        onPressed: _isCommentEmpty ? null : _addComment,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF2b448c),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: const Text('Comentar'),
                       ),
                     ],
                   ),
                 ],
               ),
+            ),
+            const SizedBox(height: 20),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: _comments.length,
+              itemBuilder: (context, index) {
+                final comment = _comments[index];
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  margin: const EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const CircleAvatar(
+                            radius: 20,
+                            backgroundColor: Color(0xFF2b448c),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  comment.userName,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 43, 185, 217),
+                                  ),
+                                ),
+                                Text(
+                                  _formatDate(comment.date),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.more_vert),
+                            onPressed: () {
+                              _showCommentOptions(context, index);
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        comment.text,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton.icon(
+                            icon: const Icon(Icons.thumb_up_outlined),
+                            label: const Text('Me gusta'),
+                            onPressed: () {},
+                            style: TextButton.styleFrom(
+                              foregroundColor: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -225,7 +386,6 @@ class ProfesorRatingPage extends StatelessWidget {
     );
   }
 
-  // Widget para mostrar las estrellas de calificación
   Widget _buildStars(int totalStars, {int filledStars = 0}) {
     return Row(
       children: List.generate(totalStars, (index) {
@@ -238,12 +398,11 @@ class ProfesorRatingPage extends StatelessWidget {
     );
   }
 
-  // Widget para mostrar cada caja de clase
   Widget _buildClassBox(String className, {Color boxColor = Colors.grey}) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: boxColor, // Se define el color del contenedor
+        color: boxColor,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
@@ -259,6 +418,133 @@ class ProfesorRatingPage extends StatelessWidget {
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
+      ),
+    );
+  }
+
+  String _formatDate(DateTime date) {
+    final now = DateTime.now();
+    final difference = now.difference(date);
+
+    if (difference.inDays < 1) {
+      if (difference.inHours < 1) {
+        return 'Hace ${difference.inMinutes} minutos';
+      }
+      return 'Hace ${difference.inHours} horas';
+    } else if (difference.inDays == 1) {
+      return 'Ayer';
+    } else if (difference.inDays < 7) {
+      return 'Hace ${difference.inDays} días';
+    }
+
+    return '${date.day}/${date.month}/${date.year}';
+  }
+
+  void _showCommentOptions(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          title: const Text('Opciones'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.edit),
+                title: const Text('Editar comentario'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _editComment(index);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.delete, color: Colors.red),
+                title: const Text('Eliminar comentario', 
+                  style: TextStyle(color: Colors.red)),
+                onTap: () {
+                  Navigator.pop(context);
+                  _deleteComment(index);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _editComment(int index) {
+    _commentController.text = _comments[index].text;
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: _commentController,
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    hintText: 'Editar comentario...',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  autofocus: true,
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _commentController.clear();
+                      },
+                      child: const Text('Cancelar'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _comments[index] = Comment(
+                            userName: _comments[index].userName,
+                            text: _commentController.text,
+                            date: DateTime.now(),
+                          );
+                        });
+                        Navigator.pop(context);
+                        _commentController.clear();
+                      },
+                      child: const Text('Guardar'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  void _deleteComment(int index) {
+    setState(() {
+      _comments.removeAt(index);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Comentario eliminado'),
+        backgroundColor: Color(0xFF2b448c),
       ),
     );
   }
