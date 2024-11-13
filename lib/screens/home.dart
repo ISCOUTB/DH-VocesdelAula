@@ -122,7 +122,9 @@ class _HomeState extends State<Home> {
                               label: const Text('Perfil')),
                           const SizedBox(height: 20),
                           ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/asignaturas');
+                              },
                               icon: const Icon(Icons.book, size: 20),
                               label: const Text('Asignatura')),
                           const SizedBox(height: 20),
